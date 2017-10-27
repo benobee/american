@@ -1,0 +1,219 @@
+.Property-List {
+    .svg-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+        #svg-us-map {
+            text {
+                font-family: futura-pt !important;
+                font-size: 1em !important;
+                font-weight: 500 !important;
+            }
+        }
+    }
+}
+
+.app-wrapper {
+    margin-top: 2em;
+    min-height: 100vh;
+    .filters.tabs {
+        background-color: @lightgrey;
+        align-items: center;
+        flex-wrap: wrap;
+        min-height: 40px;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        width: 100%;
+        display:flex;
+        justify-content:center;
+        .filter.small-tab.item {
+            flex:0 0 5em;
+            cursor: pointer;
+            text-align: center;
+            background:@lightgrey;
+            transition: background 0.4s;
+            &:hover {
+                background:@hoverGrey;
+            }
+            &.active {
+                background: @red;
+                color: white;
+            }
+        }
+        .filter.tab.item {
+            flex:0 0 15em;
+            cursor: pointer;
+            text-align: center;
+            border-bottom: 2px solid @red;
+            transition: background 0.4s, border 0.4s;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            line-height: 1em;
+            font-weight: 500;
+            padding: 0;
+            order:99;
+            .label{
+                padding: 0.5em 0;
+                width:100%;
+                display:inline-block;
+            }
+            &[data-slug*=shopping-mall]{
+                order:1;
+            }
+            &[data-slug*=office-building]{
+                order:2;
+            }
+            &[data-slug*=residential]{
+                order:3;
+            }
+            &:hover {
+                background: @hoverGrey;
+            }
+            &.active {
+                background: @red;
+                color: white;
+                border-color: @red;
+            }
+        }
+    }
+    .collection-list {
+        display: flex;
+        justify-content: space-around;
+        .item {
+            position: relative;
+            flex: 0 1 auto;
+            margin: 1em;
+            background-color: @lightgrey;
+            box-shadow: 2px 3px 8px hsla(0, 0%, 58%, 0.3);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: opacity 1s ease-in-out, transform 0.6s ease-in-out, background-color 0.2s ease-in-out;
+            &.list-complete-enter,
+            .list-complete-leave-to {
+                transform: translateY(20px);
+                visibility: hidden;
+                opacity: 0;
+            }
+            &.list-complete-leave-active {
+                transform: translateX(30px) scale(0.98);
+                position: absolute;
+                visibility: hidden;
+                opacity: 0;
+            }
+            &:hover {
+                background: @blue;
+                * {
+                    color: white;
+                }
+                .meta-content .info {
+                    .title {
+                        transition: color 0.8s 0.1s ease-in-out;
+                        color: white;
+                        &:after {
+                            transition: width 0.2s 0.3s ease-in-out;
+                            width: 100%;
+                        }
+                    }
+                    .location {}
+                }
+            }
+            .media-wrapper {
+                .image {
+                    height: 300px;
+                    overflow: hidden;
+                    display: flex;
+                    img {
+                        width: 100%;
+                        object-fit: cover;
+                        &.loaded {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+            .meta-content {
+                padding: 1rem;
+                .info {
+                    min-height: 80px;
+                    padding-bottom: 1em;
+                    .title {
+                        font-weight: 600;
+                        font-size: 1em;
+                        position: relative;
+                        margin-bottom: 0.25rem;
+                        color: @blue;
+                        display: block;
+                        line-height: 1.5em;
+                        transition: color 0.4s ease-in-out;
+                        &:after {
+                            content: "";
+                            width: 0%;
+                            transition: width 0.2s ease-in-out;
+                            position: absolute;
+                            display: inline-block;
+                            bottom: 0;
+                            height: 2px;
+                            left: 0;
+                            background-color: @red;
+                        }
+                    }
+                    .location {
+                        line-height: 1em;
+                        color: black;
+                        opacity: 0.7;
+                        font-weight: 400;
+                    }
+                }
+                .extra-info {
+                    border-top: 1px solid rgba(200, 200, 200, 0.2);
+                    padding-top: 0.5em;
+                    *[class*=item] {
+                        position: static;
+                        font-size: 0.8em;
+                        opacity: 0.7;
+                        line-height: 1.3em;
+                    }
+                    *[class*=category] {
+                        &:before {
+                            content: "Category: ";
+                        }
+                    }
+                    *[class*=type] {
+                        &:before {
+                            content: "Type: ";
+                        }
+                    }
+                    *[class*=county] {
+                        &:before {
+                            content: "County: ";
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#svg-us-map {
+    .state,
+    #SP-,
+    rect {
+        fill: #E7E9EA !important;
+    }
+    .state {
+        transition: fill 0.4s;
+        &.active {
+            cursor: pointer;
+            fill: @red !important;
+            transition: fill 0.4s;
+            &:hover {
+                fill: @dark-red !important;
+            }
+        }
+    }
+    text {
+        fill: black !important;
+        &.active {
+            fill: white !important;
+        }
+    }
+}

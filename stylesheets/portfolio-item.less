@@ -1,0 +1,150 @@
+.collection-type-property.view-item {
+    .Main-content {
+        max-width: 100%;
+        padding: 0px;
+    }
+}
+
+.Property-Item {
+    .header {
+        height: 300px;
+        .overlay {
+            background-color: @dark-blue;
+            z-index: 999;
+            height: 100%;
+            position: relative;
+            .text {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                @media screen and (max-width: 768px) {
+                    font-size:0.5em;
+                    line-height: 1.5em;
+                }
+                .title {
+                    font-size: 2.5em;
+                    line-height: 1.1em;
+                    color: white;
+                    font-weight: 300;
+                }
+                .meta {
+                    font-size: 2.5em;
+                    line-height: 1.1em;
+                    color: white;
+                    font-weight: 300;
+                    opacity: 0.4;
+                }
+            }
+        }
+    }
+    .content-wrapper {
+        background: white;
+        max-width: 1050px;
+        margin: 0 auto;
+        .content {
+            padding: 2em;
+            .tabs {
+                background-color: @lightgrey;
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                min-height: 40px;
+                margin-top: 1em;
+                margin-bottom: 1em;
+                .tab {
+                    flex: 1 0 auto;
+                    text-align: center;
+                    cursor: pointer;
+                    border-bottom: 2px solid @red;
+                    transition: background 0.4s;
+                    &:hover {
+                        background: @hoverGrey;
+                    }
+                    &.active {
+                        background: @red;
+                        color: white;
+                        border-color: @red;
+                    }
+                    .label {
+                        padding: 0.5rem 0.5rem;
+                        font-size: 1.2em;
+                        text-transform: uppercase;
+                        line-height: 1em;
+                        font-weight: 500;
+                    }
+                    .open-block-content {
+                        min-height: 200px;
+                    }
+                }
+            }
+            .page-content-wrapper {
+                padding: 2em 1em;
+                .page-content {
+                    visibility: hidden;
+                    opacity: 0;
+                    position: absolute;
+                    display: none;
+                    &.active {
+                        position: static;
+                        opacity: 1;
+                        visibility: visible;
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    .media-wrapper {
+                        display: flex;
+                        flex-wrap: wrap;
+                        .media-item {
+                            object-fit: contain;
+                            overflow: hidden;
+                            flex:1 0 auto;
+                            .image-title{
+                                font-size:1.5em;
+                                line-height: 1.5em;
+                                margin-bottom:0.5em;
+                                text-align:center;
+                                font-weight:500;
+                                text-transform: uppercase;
+                            }
+                            .image {
+                                img {
+                                    width: 100%;
+                                    height: auto;
+                                }
+                            }
+                        }
+                    }
+                    .contact-info-list{
+                        display: flex;
+                        flex-wrap:wrap;
+                        .contact-item{
+                            flex:1 0 auto;
+                            margin-right:0.5em;
+                            margin-bottom:2em;
+                            .contact-title{
+                                font-weight:600;
+                                margin-bottom:1em;
+                            }
+                        }                        
+                    }
+                }
+            }
+        }
+    }
+}
+
+.tenant-roster-link {
+    margin-top: 2em;
+    text-align: center;
+    &.hidden {
+        display: none;
+    }
+    a {
+        background: @red;
+        color: white;
+        font-size: 1.5em;
+        padding: 0.5em 1.2em;
+        width: 100%;
+    }
+}
