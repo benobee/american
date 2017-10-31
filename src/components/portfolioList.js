@@ -1,4 +1,5 @@
 import html from "./portfolioList.html";
+import util from "../util/util";
 
 const portfolioList = (data, events) => {
     return {
@@ -27,7 +28,7 @@ const portfolioList = (data, events) => {
         },
         filters: {
             slugify (value) {
-                return value.toLowerCase().replace(/ /g, "-").replace(/-&-/g, "-").replace(/[^\w-]+/g, "");
+                return util.slugify(value);
             }
         },
         computed: {
@@ -52,7 +53,7 @@ const portfolioList = (data, events) => {
             renderList () {
                 let array = this.items.slice(0);
 
-                this.presentStates = data.presentStates;
+                this.presentStates = this.sortByTitle(data.presentStates);
 
                 if (this.search.category) {
 
@@ -102,11 +103,6 @@ const portfolioList = (data, events) => {
             }
         },
         methods: {
-            dup (array) {
-                return array.filter((elem, index, self) => {
-                    return index === self.indexOf(elem);
-                });
-            },
             filterLocationTags (currentItems) {
                 let array = this.presentStates.slice(0);
 
@@ -126,7 +122,7 @@ const portfolioList = (data, events) => {
                     }
                 });
 
-                parsedStates = this.dup(parsedStates);
+                parsedStates = util.dup(parsedStates);
 
                 array = array.map((item) => {
                     const index = parsedStates.indexOf(item.abbrev);
@@ -150,9 +146,6 @@ const portfolioList = (data, events) => {
                 secondPart = (`000${ secondPart.toString(36)}`).slice(-3);
                 return firstPart + secondPart;
             },
-            slugify (value) {
-                return value.toLowerCase().replace(/ /g, "-").replace(/-&-/g, "-").replace(/[^\w-]+/g, "");
-            },
             resetAll () {
                 //reset search
                 this.search.category = "";
@@ -160,8 +153,8 @@ const portfolioList = (data, events) => {
                 this.cleanupScrollEvents();
 
                 //make all categories inactive to allow for toggle behaviour
-                this.categories.forEach((item) => {
-                    this.$set(item, "isActive", false);
+                this.categories.map((item) => {
+                    item.isActive = false;
                 });
 
                 this.bindScrollEvents();
@@ -181,7 +174,7 @@ const portfolioList = (data, events) => {
                 return array;
             },
             sortByTitle (array) {
-                array.sort((first, next) => {
+                array = array.sort((first, next) => {
                     if (first.fullName < next.fullName) {
                         return -1;
                     }
@@ -238,9 +231,9 @@ const portfolioList = (data, events) => {
                 array = array.map((item) => {
 
                     const filter = {
-                        id: this.generateUID(),
+                        id: util.generateUID(),
                         name: item,
-                        slug: this.slugify(item),
+                        slug: util.slugify(item),
                         isActive: false
                     };
 

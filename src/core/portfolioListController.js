@@ -1,7 +1,7 @@
 import Vue from "vue";
-import axios from "axios";
 import portfolioList from "../components/portfolioList";
 import Events from "./events";
+import util from "../util/util";
 
 const ListEvents = new Events();
 
@@ -10,7 +10,7 @@ const portfolioListController = {
     init (parent) {
         this.data = this.data();
         this.cacheDOM(parent);
-        this.getData("/portfolio-list-collection", (response) => {
+        util.getData("/portfolio-list-collection", (response) => {
             if (response) {
                 Object.assign(this.data, { site: response.data });
 
@@ -84,31 +84,13 @@ const portfolioListController = {
             }
         };
     },
-    util: {
-        toArray (array) {
-            return [].slice.call(array);
-        },
-        dup (array) {
-            return array.filter((elem, index, self) => {
-                return index === self.indexOf(elem);
-            });
-        },
-        generateUID () {
-            let firstPart = (Math.random() * 46656) | 0;
-            let secondPart = (Math.random() * 46656) | 0;
-
-            firstPart = (`000${ firstPart.toString(36)}`).slice(-3);
-            secondPart = (`000${ secondPart.toString(36)}`).slice(-3);
-            return firstPart + secondPart;
-        }
-    },
     cacheDOM (parent) {
         const body = parent;
 
         this.list = body.querySelector("#portfolio-list");
         this.map = body.querySelector("#svg-us-map");
-        this.labels = this.util.toArray(body.querySelectorAll("text"));
-        this.states = this.filterStates(this.util.toArray(body.querySelectorAll("path")));
+        this.labels = util.toArray(body.querySelectorAll("text"));
+        this.states = this.filterStates(util.toArray(body.querySelectorAll("path")));
     },
     filterStates (array) {
         return array.filter((item) => {
@@ -133,29 +115,6 @@ const portfolioListController = {
             return result;
         });
     },
-    getData (url, func) {
-        const timestampID = this.util.generateUID();
-
-        const config = {
-            headers: {
-                "Cache-Control": "no-cache, no-store, must-revalidate"
-            },
-            params: {
-                format: "json",
-                nocache: true,
-                timestampID
-            }
-        };
-
-        axios.get(url, config)
-            .then((response) => {
-                func(response);
-            })
-            .catch((error) => {
-                func({ error });
-                console.error(error);
-            });
-    },
     addActiveStates (data) {
         let presentStates = [];
 
@@ -175,7 +134,7 @@ const portfolioListController = {
             }
         });
 
-        presentStates = this.util.dup(presentStates);
+        presentStates = util.dup(presentStates);
 
         this.data.presentStates = presentStates.map((item, i) => {
             return {

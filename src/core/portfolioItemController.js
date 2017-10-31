@@ -1,9 +1,9 @@
-import axios from "axios";
+import util from "../util/util";
 
 //PORTFOLIO ITEM CONTROLLER
 const portfolioItemController = {
     init (parent) {
-        this.methods.getData(location.pathname, (response) => {
+        util.getData(location.pathname, (response) => {
             if (response.data.item.location) {
                 this.methods.map(response.data.item.location);
             }
@@ -51,26 +51,6 @@ const portfolioItemController = {
         }
     },
     methods: {
-        getData (url, func) {
-            const config = {
-                headers: {
-                    "Cache-Control": "no-cache, no-store, must-revalidate"
-                },
-                params: {
-                    format: "json",
-                    nocache: true
-                }
-            };
-
-            axios.get(url, config)
-                .then((response) => {
-                    func(response);
-                })
-                .catch((error) => {
-                    func({ error });
-                    console.error(error);
-                });
-        },
         tentantRoster () {
 
             /* 
@@ -85,7 +65,7 @@ const portfolioItemController = {
 
             const url = el.dataset.url;
 
-            this.getData(url, (response) => {
+            util.getData(url, (response) => {
                 if (!response) {
                     document.querySelector(".tenant-roster-link").classList.remove("hidden");
                 }
@@ -213,6 +193,7 @@ const portfolioItemController = {
                     }
                 ]
             });
+
             const marker = new google.maps.Marker({
                 position: uluru,
                 map

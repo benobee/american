@@ -7,15 +7,15 @@
             </div>
         </div>
     </div>
-    <div class="filters tabs" v-bind:class="{hidden: !moreThanOne}">
-        <div v-for="item in presentStates" class="filter small-tab item" :data-id="item.id" :data-abbrev="item.abbrev" v-bind:class="{ active: item.isActive }" key="item.id" v-on:click="filterByLocation(item)" v-if="item.visible">
+    <div class="filters tabs" v-bind:class="{hidden: moreThanOne}">
+        <div v-for="(item, index) in presentStates" class="filter small-tab item" :data-id="item.id" :data-abbrev="item.abbrev" v-bind:class="{ active: item.isActive }" :key="index" v-on:click="filterByLocation(item)" v-if="item.visible">
             <div class="label">
                 {{item.fullName}}
             </div>
         </div>
     </div>
     <transition-group name="list-complete" tag="div" class="collection-list">
-        <div v-for="item in renderList" key="item.id" class="item" :data-item-id="item.id" :data-category="'category-' + item.categories[ 0 ] | slugify" :data-location="'location-' + item.location.addressLine2 | slugify">
+        <div v-for="item in renderList" :key="item.id" class="item" :data-item-id="item.id" :data-category="'category-' + item.categories[ 0 ] | slugify" :data-location="'location-' + item.location.addressLine2 | slugify">
             <a v-bind:href="item.fullUrl">
                 <div class="media-wrapper">
                     <div class="image" v-bind:style="{ backgroundColor: '#' + item.colorData.suggestedBgColor }">
