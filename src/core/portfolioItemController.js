@@ -53,8 +53,8 @@ const portfolioItemController = {
     methods: {
         tentantRoster () {
 
-            /* 
-               Get data from google spreadsheet published webpage. 
+            /*
+               Get data from google spreadsheet published webpage.
                Link is retrieved from a data attribute on the page
                stored in the CMS. If the page returns an error, then
                the link from the page will be displayed for the user until

@@ -1,5 +1,6 @@
 import portfolioListController from "./core/portfolioListController";
 import portfolioItemController from "./core/portfolioItemController";
+import homePageController from "./core/homePageController";
 
 const App = {
     init () {
@@ -12,12 +13,17 @@ const App = {
         if (this.item) {
             portfolioItemController.init(this.item);
         }
+
+        if (this.homePage) {
+            homePageController.init();
+        }
     },
     cacheDOM () {
         const body = document.querySelector("body");
 
         this.list = body.querySelector(".Main.Main--property-list");
         this.item = body.querySelector(".Main.Main--property-item");
+        this.homePage = document.querySelector(".homepage");
     }
 };
 

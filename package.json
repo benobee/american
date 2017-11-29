@@ -7,7 +7,7 @@
     "test": "mocha",
     "start": "webpack --progress --colors --watch",
     "watch": "./node_modules/.bin/webpack -d --watch --colors",
-    "build": "set PROD_ENV=true&&set process.env='production'&&webpack -p&&babel src -d /template/assets",
+    "build": "set PROD_ENV=true&&set process.env='production'&&webpack -p",
     "dev": "webpack-dev-server ./main.js --hot --watch --colors"
   },
   "author": "Ben Obee",
@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "scrollmap": "^1.7.1",
     "vue": "^2.5.2"
   }
 }
