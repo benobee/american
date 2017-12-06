@@ -3,23 +3,15 @@
 ### Table of Contents
 
 -   [App](#app)
--   [App.init](#appinit)
 -   [portfolioListController](#portfoliolistcontroller)
 -   [portfolioItemController](#portfolioitemcontroller)
 -   [homePage](#homepage)
 -   [footerController](#footercontroller)
--   [logoCarousel](#logocarousel)
 
 ## App
 
 Main app object. Controls the initialization for all 
 controllers.
-
-## App.init
-
-Runs all methods
-
-Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** returns the app object
 
 ## portfolioListController
 
@@ -36,13 +28,3 @@ All obects, components, event listeners localized to the homepage
 ## footerController
 
 All obects, components, event listeners localized to the footer
-
-## logoCarousel
-
-Logo carousel component
-
-**Parameters**
-
--   `data` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** for the component
-
-Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** returns a Vue component's config object

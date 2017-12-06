@@ -3,7 +3,8 @@ import html from "./logoCarousel.html";
 /**
  * Logo carousel component
  * @param  {Object} data for the component
- * @return {Object} returns a Vue component's config object
+ * @return {Object} Vue component config
+ * @private
  */
 
 const logoCarousel = (data) => {

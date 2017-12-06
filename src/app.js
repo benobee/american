@@ -14,8 +14,8 @@ import footerController from "./core/footerController";
 const App = {
     /**
      * Runs all methods
-     * @returns {Object} returns the app object
-     * @name App.init
+     * @returns {Object} config and components
+     * @private
      */
     init () {
         this.cacheDOM();
