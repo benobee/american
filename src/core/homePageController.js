@@ -3,12 +3,25 @@ import Scrollmap from "scrollmap";
 /**
  * All obects, components, event listeners localized to the homepage
  * @type {Object}
- * @name homePage
+ * @name homePageController
  */
-const homePage = {
+
+const homePageController = {
+
     init () {
         this.bindScrollListeners();
+
+        return this;
     },
+
+
+    /**
+     * Using Scrollmap to bind certain DOM elements. This provides
+     * hooks for CSS classes.
+     * 
+     * @private
+     */
+
     bindScrollListeners () {
         Scrollmap.trigger({
                 target: ".sqs-col-4",
@@ -21,4 +34,4 @@ const homePage = {
     }
 };
 
-export default homePage;
+export default homePageController;

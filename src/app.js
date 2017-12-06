@@ -3,6 +3,8 @@ import portfolioItemController from "./core/portfolioItemController";
 import homePageController from "./core/homePageController";
 import footerController from "./core/footerController";
 
+
+
 /**
  * Main app object. Controls the initialization for all 
  * controllers.
@@ -11,12 +13,15 @@ import footerController from "./core/footerController";
  * @name App
  * 
  */
+
 const App = {
+
     /**
      * Runs all methods
      * @returns {Object} config and components
      * @private
      */
+
     init () {
         this.cacheDOM();
         if (this.list) {
@@ -34,10 +39,13 @@ const App = {
 
         return this;
     },
+
+
     /**
      * Caches the DOM in memory for quicker DOM queries
      * @private
      */
+
     cacheDOM () {
         const body = document.querySelector("body");
 

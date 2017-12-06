@@ -29,6 +29,8 @@ const logoCarousel = (data) => {
             }
         },
         methods: {
+
+
             /**
              * Initialize the carousel, run and set the configuration options.
              * This method will translate the config options and set the the
@@ -39,6 +41,7 @@ const logoCarousel = (data) => {
              * @param  {Object} config sets the carousel options
              * @private
              */
+
             initCarousel (config) {
                 this.itemsPerPage = config.itemsPerPage;
                 this.carouselPageSize = Math.ceil(this.items.length / config.itemsPerPage);
@@ -54,12 +57,15 @@ const logoCarousel = (data) => {
                     this.changePage(this.counter); // setting a negative value for CSS transforms.
                 }, this.interval);
             },
+
+
             /**
              * Sets the style from the given page index
              * @param  {Number} index the slide rotation page index based on 
              * config options.
              * @private
              */
+
             changePage (index) {
                 if (index === this.itemsPerPage - 1) {
                     this.hasNext = false;

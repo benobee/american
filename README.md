@@ -5,7 +5,7 @@
 -   [App](#app)
 -   [portfolioListController](#portfoliolistcontroller)
 -   [portfolioItemController](#portfolioitemcontroller)
--   [homePage](#homepage)
+-   [homePageController](#homepagecontroller)
 -   [footerController](#footercontroller)
 
 ## App
@@ -21,7 +21,7 @@ All obects, components, event listeners localized to the portfolio list view
 
 All obects, components, event listeners localized to the portfolio item view
 
-## homePage
+## homePageController
 
 All obects, components, event listeners localized to the homepage
 
