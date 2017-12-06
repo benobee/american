@@ -1,6 +1,10 @@
 import util from "../util/util";
 
-//PORTFOLIO ITEM CONTROLLER
+/**
+ * All obects, components, event listeners localized to the portfolio item view
+ * @type {Object}
+ * @name portfolioItemController
+ */
 const portfolioItemController = {
     init (parent) {
         util.getData(location.pathname, (response) => {

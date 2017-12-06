@@ -1,0 +1,43 @@
+.carousel-wrapper {
+    overflow: hidden;
+    .navigation.ui{
+        display:flex;
+        justify-content:flex-end;
+        .button{
+            padding:0.5em;
+            cursor: pointer;
+            transition:opacity 0.4s;
+            .icon{
+                svg{
+                    fill:white;
+                }
+            }
+            &:not(.active){
+                pointer-events: none;
+                opacity: 0.2;
+            }
+        }
+    }
+    .carousel-inner {
+        display: flex;
+        transition: transform 1s;
+        transform: translateX(00%);
+        .slide {
+            flex: 1 0 14.28%;
+            @media screen and (max-width:768px){
+                flex: 1 0 33.33%;
+            }
+            @media screen and (max-width:500px){
+                flex: 1 0 50%;
+            }
+            margin: 0px;
+            .slide-content {
+                padding: 5px;
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+    }
+}
