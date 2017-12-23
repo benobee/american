@@ -11,14 +11,14 @@ const ListEvents = new Events();
  * @type {Object}
  * @name portfolioListController
  */
+
 const portfolioListController = {
     init (parent) {
         this.data = this.data();
         this.cacheDOM(parent);
-        util.getData("/portfolio-list-collection", (response) => {
+        util.getData(location.pathname, (response) => {
             if (response) {
                 Object.assign(this.data, { site: response.data });
-
                 this.addActiveStates(this.data);
                 this.render(this.data);
             }

@@ -30,7 +30,6 @@ const logoCarousel = (data) => {
         },
         methods: {
 
-
             /**
              * Initialize the carousel, run and set the configuration options.
              * This method will translate the config options and set the the
@@ -57,7 +56,6 @@ const logoCarousel = (data) => {
                     this.changePage(this.counter); // setting a negative value for CSS transforms.
                 }, this.interval);
             },
-
 
             /**
              * Sets the style from the given page index

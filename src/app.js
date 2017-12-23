@@ -3,8 +3,6 @@ import portfolioItemController from "./core/portfolioItemController";
 import homePageController from "./core/homePageController";
 import footerController from "./core/footerController";
 
-
-
 /**
  * Main app object. Controls the initialization for all 
  * controllers.

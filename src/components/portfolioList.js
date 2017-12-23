@@ -88,6 +88,7 @@ const portfolioList = (data, events) => {
                     });
                 }
 
+                // array = this.sortByCategory(array);
                 array = this.paginate(array);
 
                 return array;
@@ -170,6 +171,19 @@ const portfolioList = (data, events) => {
                 //limit the active items list based on page index to allow for
                 //infinite scroll and append
                 array = array.splice(0, this.pagination.currentIndex + this.pagination.pageLimit);
+
+                return array;
+            },
+            sortByCategory (array) {
+                array = array.sort((first, next) => {
+                    if (first.categories[ 0 ] < next.categories[ 0 ]) {
+                        return -1;
+                    }
+                    if (first.categories[ 0 ] > next.categories[ 0 ]) {
+                        return 1;
+                    }
+                    return 0;
+                });
 
                 return array;
             },

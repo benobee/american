@@ -7,12 +7,13 @@ import logoCarousel from "../components/logoCarousel";
  * @type {Object}
  * @name footerController
  */
+
 const footerController = {
     init () {
         this.carousel();
     },
     carousel () {
-        util.getData("clients", (response) => {
+        util.getData("/clients", (response) => {
             if (!response.error) {
                 Vue.component("carousel", logoCarousel(response.data));
 
