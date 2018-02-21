@@ -18,7 +18,7 @@ const homePageController = {
     /**
      * Using Scrollmap to bind certain DOM elements. This provides
      * hooks for CSS classes.
-     * 
+     *
      * @private
      */
 

@@ -1,7 +1,41 @@
+.Header-nav--primary {
+    .Header-nav-item--folder {
+        .Header-nav-folder {
+            a {
+                color: #8e8a8a !important;
+                &:hover {
+                    color: black !important;
+                }
+            }
+        }
+    }
+}
+
+/* Make all pages with banner in the slug have a blue background.*/
+
+*[id*="banner"] {
+    background: @dark-blue;
+    h1 {
+        color: white;
+    }
+}
+
 .Header.Header--bottom {
     background: @blue;
+    padding-bottom: 0.5em;
 }
 
 #home-banner {
     background-color: @blue;
+}
+
+
+/* Footer */
+
+.Footer {
+    .summary-item-list.sqs-gallery {
+        .summary-item {
+            width: 14.4% !important;
+        }
+    }
 }

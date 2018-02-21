@@ -4,12 +4,12 @@ import homePageController from "./core/homePageController";
 import footerController from "./core/footerController";
 
 /**
- * Main app object. Controls the initialization for all 
+ * Main app object. Controls the initialization for all
  * controllers.
- * 
+ *
  * @type {Object}
  * @name App
- * 
+ *
  */
 
 const App = {

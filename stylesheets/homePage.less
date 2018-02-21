@@ -1,0 +1,41 @@
+/* HOME PAGE */
+
+.homepage {
+    .hidden {
+        opacity: 0;
+        @media screen and (max-width: 768px) {
+            opacity:1;
+            transform: none;
+        }
+    }
+    .visible {
+        opacity: 1;
+    }
+    .sqs-col-4 {
+        transition: opacity 1s 0.3s, transform 0.6s 0.3s;
+        .hidden;
+        transform: translateX(-40px);
+        &[data-scrollmap-triggered-in="true"] {
+            .visible;
+            transform: translateX(0);
+        }
+    }
+    .sqs-col-8 {
+        transition: opacity 1s 0.5s, transform 0.6s 0.5s;
+        .hidden;
+        transform: translateY(30px);
+        &[data-scrollmap-triggered-in="true"] {
+            .visible;
+            transform: translateY(0);
+        }
+    }
+}
+
+.sqs-edit-mode,
+.sqs-edit-mode-active {
+    .sqs-col-4,
+    .sqs-col-8 {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}

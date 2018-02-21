@@ -10,7 +10,7 @@
 
 ## App
 
-Main app object. Controls the initialization for all 
+Main app object. Controls the initialization for all
 controllers.
 
 ## portfolioListController

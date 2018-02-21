@@ -33,10 +33,10 @@ const logoCarousel = (data) => {
             /**
              * Initialize the carousel, run and set the configuration options.
              * This method will translate the config options and set the the
-             * interval accordingingly. Using config for readability. It also 
+             * interval accordingingly. Using config for readability. It also
              * sets the style to be injected and rotate the carousel with CSS
              * transforms.
-             *  
+             *
              * @param  {Object} config sets the carousel options
              * @private
              */
@@ -59,7 +59,7 @@ const logoCarousel = (data) => {
 
             /**
              * Sets the style from the given page index
-             * @param  {Number} index the slide rotation page index based on 
+             * @param  {Number} index the slide rotation page index based on
              * config options.
              * @private
              */

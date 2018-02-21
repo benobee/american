@@ -1,3 +1,48 @@
+/* Portfolio list view */
+
+.collection-type-property.view-list {
+    .Main.Main--property-list {
+        .Main-content {
+            max-width: 100% !important;
+            padding: 0;
+            .Property-List {
+                .svg-wrapper {
+                    flex: 1 1 auto;
+                    max-height: 600px;
+                    @media screen and (max-width: 1000px) {
+                        max-height:60vw;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.Property-List {
+    .app-wrapper {
+        background: @lightgrey;
+        .filters {
+            [data-slug="commercial"] {
+                order: 1 !important;
+            }
+            [data-slug="residential"] {
+                order: 2 !important;
+            }
+        }
+        .collection-list {
+            max-width: 1100px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            padding: 1em;
+            justify-content: flex-start;
+            .item {
+                flex: 1 1 15em;
+                max-width: 30em;
+            }
+        }
+    }
+}
+
 .collection-type-property.view-list {
     .svg-wrapper {
         max-width: 1000px;
@@ -23,22 +68,22 @@
         padding-top: 1em;
         padding-bottom: 1em;
         width: 100%;
-        display:flex;
-        justify-content:center;
+        display: flex;
+        justify-content: center;
         .filter.small-tab.item {
-            flex:0 0 5em;
+            flex: 0 0 5em;
             cursor: pointer;
             text-align: center;
-            background:@lightgrey;
+            background: @lightgrey;
             transition: background 0.4s;
-            padding:0;
-            .label{
+            padding: 0;
+            .label {
                 padding: 0.2em 0;
-                width:100%;
-                display:inline-block;                
+                width: 100%;
+                display: inline-block;
             }
             &:hover {
-                background:@hoverGrey;
+                background: @hoverGrey;
             }
             &.active {
                 background: @red;
@@ -46,7 +91,7 @@
             }
         }
         .filter.tab.item {
-            flex:0 0 15em;
+            flex: 0 0 15em;
             cursor: pointer;
             text-align: center;
             border-bottom: 2px solid @red;
@@ -56,20 +101,20 @@
             line-height: 1em;
             font-weight: 500;
             padding: 0;
-            order:99;
-            .label{
+            order: 99;
+            .label {
                 padding: 0.5em 0;
-                width:100%;
-                display:inline-block;
+                width: 100%;
+                display: inline-block;
             }
-            &[data-slug*=shopping-mall]{
-                order:1;
+            &[data-slug*=shopping-mall] {
+                order: 1;
             }
-            &[data-slug*=office-building]{
-                order:2;
+            &[data-slug*=office-building] {
+                order: 2;
             }
-            &[data-slug*=residential]{
-                order:3;
+            &[data-slug*=residential] {
+                order: 3;
             }
             &:hover {
                 background: @hoverGrey;
