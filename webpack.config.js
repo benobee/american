@@ -22,25 +22,25 @@ const WEBPACK_CONFIG = { module: {} };
  * be hashed, js will be minified.
  */
 
-const isProduction = JSON.parse(process.env.PROD_ENV ? true : false);
+const isProduction = JSON.parse(Boolean(process.env.PROD_ENV));
 
 /***************************************/
 /*********       INPUT        **********/
 /***************************************/
 const input = {
     context: __dirname,
-    entry: ['./main.js', './main.less'],
-    devtool: isProduction ? '' : 'eval',
+    entry: ["./main.js", "./main.less"],
+    devtool: isProduction ? "" : "eval",
     node: {
-        dns: 'mock',
-        net: 'mock',
-        fs: 'empty'
+        dns: "mock",
+        net: "mock",
+        fs: "empty"
     },
     resolve: {
         alias: {
-            'masonry': 'masonry-layout',
-            'isotope': 'isotope-layout',
-            'vue': 'vue/dist/vue.min.js'
+            masonry: "masonry-layout",
+            isotope: "isotope-layout",
+            vue: "vue/dist/vue.min.js"
         }
     }
 };
@@ -64,16 +64,16 @@ const rules = [];
 const HTMLRules = {
     test: /\.html$/,
     exclude: /node_modules/,
-    use: { 
-        loader: 'html-loader' 
+    use: {
+        loader: "html-loader"
     }
-}
+};
 
 rules.push(HTMLRules);
 
 // @rule: JS
 const JSRules = {
-    enforce: 'pre',
+    enforce: "pre",
     test: /\.js$/,
     exclude: /node_modules/,
     use: [
@@ -84,7 +84,7 @@ const JSRules = {
                 emitWarning: true,
                 fix: true
             }
-        },
+        }
     ]
 };
 
@@ -93,13 +93,15 @@ rules.push(JSRules);
 //@rule: Vue
 const vue = {
     test: /\.vue$/,
-    use: [{
-        loader: 'vue-loader',
-        options: {
-            extractCSS: true
+    use: [
+        {
+            loader: "vue-loader",
+            options: {
+                extractCSS: true
+            }
         }
-    }]
-}
+    ]
+};
 
 rules.push(vue);
 
@@ -110,15 +112,16 @@ const lessLoader = {
     test: /\.less$/,
     exclude: /node_modules/,
     use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [{
-                loader: 'css-loader',
+        fallback: "style-loader",
+        use: [
+            {
+                loader: "css-loader"
             },
             {
-                loader: 'postcss-loader',
+                loader: "postcss-loader"
             },
             {
-                loader: 'less-loader',
+                loader: "less-loader"
             }
         ]
     })
@@ -132,9 +135,9 @@ rules.push(lessLoader);
 const postCSSLoader = {
     test: /\.css$/,
     use: [
-        'style-loader',
+        "style-loader",
         {
-            loader: 'postcss-loader',
+            loader: "postcss-loader"
         }
     ]
 };
@@ -162,7 +165,7 @@ WEBPACK_CONFIG.module.rules = rules;
 /*
  * each plugin will push to this plugins
  * array. Some will only be pushed when
- * config is set to production. 
+ * config is set to production.
  */
 
 const plugins = [];
@@ -171,8 +174,8 @@ const plugins = [];
 
 // @plugin: node env
 const nodeENV = new webpack.DefinePlugin({
-    'process.env': {
-        NODE_ENV: JSON.stringify('production')
+    "process.env": {
+        NODE_ENV: JSON.stringify("production")
     }
 });
 
@@ -191,8 +194,8 @@ plugins.push(CSSBundle);
 
 // @plugin: extend jquery for jquery plugins
 const jQueryExtend = new webpack.ProvidePlugin({
-    $: "jquery",
-    jQuery: "jquery",
+    "$": "jquery",
+    "jQuery": "jquery",
     "window.jQuery": "jquery"
 });
 
@@ -202,8 +205,8 @@ plugins.push(jQueryExtend);
 
 // @plugin: handling es6 promises
 const promises = new webpack.ProvidePlugin({
-    'Promise': 'es6-promise',
-    'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+    Promise: "es6-promise",
+    fetch: "imports?this=>global!exports?global.fetch!whatwg-fetch"
 });
 
 plugins.push(promises);
@@ -211,9 +214,7 @@ plugins.push(promises);
 /*********************/
 
 // @plugin: post CSS
-const postCSS = [
-    require('autoprefixer')
-]
+const postCSS = [require("autoprefixer")];
 
 postCSS.forEach((item) => {
     plugins.push(item);
@@ -222,10 +223,10 @@ postCSS.forEach((item) => {
 /*********************/
 //@plugin: Vue components
 const vueComponents = new webpack.DefinePlugin({
-    'process.env': {
-        NODE_ENV: '"production"'
+    "process.env": {
+        NODE_ENV: "\"production\""
     }
-})
+});
 
 if (isProduction) {
     plugins.push(vueComponents);
@@ -237,12 +238,12 @@ const minify = new webpack.optimize.UglifyJsPlugin({
         warnings: false
     },
     output: {
-        comments: isProduction ? false : true,
+        comments: !isProduction
     },
-    minimize: isProduction ? true : false,
+    minimize: Boolean(isProduction),
     debug: false,
     sourceMap: true,
-    minify: isProduction ? true : false,
+    minify: Boolean(isProduction)
 });
 
 //if production is set, js will be minified
@@ -256,8 +257,8 @@ WEBPACK_CONFIG.plugins = plugins;
 /************************************/
 const output = {
     output: {
-        publicPath: '/',
-        path: __dirname + "/template/assets",
+        publicPath: "/",
+        path: `${__dirname}/../template/assets`,
         filename: "bundle.js"
     }
 };

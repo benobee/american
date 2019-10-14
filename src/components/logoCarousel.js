@@ -29,7 +29,6 @@ const logoCarousel = (data) => {
             }
         },
         methods: {
-
             /**
              * Initialize the carousel, run and set the configuration options.
              * This method will translate the config options and set the the
@@ -85,14 +84,14 @@ const logoCarousel = (data) => {
                 this.slideStyle = `transform: translateX(${-Math.abs(this.counter)}00%)`;
             },
             next () {
-                const index = this.counter += 1;
+                const index = (this.counter += 1);
 
                 this.stopTimer();
                 this.changePage(index);
                 this.startTimer();
             },
             prev () {
-                const index = this.counter -= 1;
+                const index = (this.counter -= 1);
 
                 this.stopTimer();
                 this.changePage(index);

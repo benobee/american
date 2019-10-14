@@ -41,7 +41,7 @@ const portfolioItemController = {
             const selectContent = (el) => {
                 const id = el.dataset.target;
 
-                const target = this.parent.querySelector(`.page-content[data-id='${ id }']`);
+                const target = this.parent.querySelector(`.page-content[data-id='${id}']`);
 
                 target.classList.add("active");
             };
@@ -56,7 +56,6 @@ const portfolioItemController = {
     },
     methods: {
         tentantRoster () {
-
             /*
                Get data from google spreadsheet published webpage.
                Link is retrieved from a data attribute on the page
@@ -85,28 +84,34 @@ const portfolioItemController = {
         },
         map (data) {
             const uluru = { lat: data.mapLat, lng: data.mapLng };
-            const map = new google.maps.Map(document.getElementById("map"), {
+            const map = new window.google.maps.Map(document.getElementById("map"), {
                 zoom: data.mapZoom,
                 center: uluru,
                 disableDefaultUI: false,
-                styles: [{
+                styles: [
+                    {
                         featureType: "administrative",
                         elementType: "all",
-                        stylers: [{
-                            saturation: "-100"
-                        }]
+                        stylers: [
+                            {
+                                saturation: "-100"
+                            }
+                        ]
                     },
                     {
                         featureType: "administrative.province",
                         elementType: "all",
-                        stylers: [{
-                            visibility: "off"
-                        }]
+                        stylers: [
+                            {
+                                visibility: "off"
+                            }
+                        ]
                     },
                     {
                         featureType: "landscape",
                         elementType: "all",
-                        stylers: [{
+                        stylers: [
+                            {
                                 saturation: -100
                             },
                             {
@@ -120,7 +125,8 @@ const portfolioItemController = {
                     {
                         featureType: "poi",
                         elementType: "all",
-                        stylers: [{
+                        stylers: [
+                            {
                                 saturation: -100
                             },
                             {
@@ -134,35 +140,44 @@ const portfolioItemController = {
                     {
                         featureType: "road",
                         elementType: "all",
-                        stylers: [{
-                            saturation: "-100"
-                        }]
+                        stylers: [
+                            {
+                                saturation: "-100"
+                            }
+                        ]
                     },
                     {
                         featureType: "road.highway",
                         elementType: "all",
-                        stylers: [{
-                            visibility: "simplified"
-                        }]
+                        stylers: [
+                            {
+                                visibility: "simplified"
+                            }
+                        ]
                     },
                     {
                         featureType: "road.arterial",
                         elementType: "all",
-                        stylers: [{
-                            lightness: "30"
-                        }]
+                        stylers: [
+                            {
+                                lightness: "30"
+                            }
+                        ]
                     },
                     {
                         featureType: "road.local",
                         elementType: "all",
-                        stylers: [{
-                            lightness: "40"
-                        }]
+                        stylers: [
+                            {
+                                lightness: "40"
+                            }
+                        ]
                     },
                     {
                         featureType: "transit",
                         elementType: "all",
-                        stylers: [{
+                        stylers: [
+                            {
                                 saturation: -100
                             },
                             {
@@ -173,7 +188,8 @@ const portfolioItemController = {
                     {
                         featureType: "water",
                         elementType: "geometry",
-                        stylers: [{
+                        stylers: [
+                            {
                                 hue: "#ffff00"
                             },
                             {
@@ -187,7 +203,8 @@ const portfolioItemController = {
                     {
                         featureType: "water",
                         elementType: "labels",
-                        stylers: [{
+                        stylers: [
+                            {
                                 lightness: -25
                             },
                             {
@@ -197,6 +214,8 @@ const portfolioItemController = {
                     }
                 ]
             });
+
+            console.log(map);
 
             const marker = new google.maps.Marker({
                 position: uluru,

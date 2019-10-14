@@ -2,7 +2,7 @@ import Vue from "vue";
 import portfolioList from "../components/portfolioList";
 import Events from "./events";
 import util from "../util/util";
-import * as statesJSONList from "./states.json";
+import * as statesJSONList from "../constants/states.json";
 
 const ListEvents = new Events();
 
@@ -85,7 +85,7 @@ const portfolioListController = {
 
         this.data.presentStates = presentStates.map((item, i) => {
             return {
-                id: `id_${ i + 1}`,
+                id: `id_${i + 1}`,
                 abbrev: item,
                 fullName: this.data.statesJSON[ item ],
                 isActive: false,
@@ -100,7 +100,7 @@ const portfolioListController = {
                 activeState.classList.add("active");
             }
 
-            const target = document.getElementById((document.getElementById(tagName).dataset.label));
+            const target = document.getElementById(document.getElementById(tagName).dataset.label);
 
             if (target) {
                 target.classList.add("active");

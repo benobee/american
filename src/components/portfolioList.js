@@ -56,15 +56,14 @@ const portfolioList = (data, events) => {
                 this.presentStates = this.sortByTitle(data.presentStates);
 
                 if (this.search.category) {
-
                     array = array.slice(0).filter((item) => {
                         let result = true;
 
-                        if ((this.search.category && this.search.category.length > 0)) {
-                            result = (item.categories[ 0 ] === this.search.category);
+                        if (this.search.category && this.search.category.length > 0) {
+                            result = item.categories[ 0 ] === this.search.category;
                         }
 
-                        return (result);
+                        return result;
                     });
 
                     if (!this.search.location) {
@@ -143,8 +142,8 @@ const portfolioList = (data, events) => {
                 let firstPart = (Math.random() * 46656) | 0;
                 let secondPart = (Math.random() * 46656) | 0;
 
-                firstPart = (`000${ firstPart.toString(36)}`).slice(-3);
-                secondPart = (`000${ secondPart.toString(36)}`).slice(-3);
+                firstPart = `000${firstPart.toString(36)}`.slice(-3);
+                secondPart = `000${secondPart.toString(36)}`.slice(-3);
                 return firstPart + secondPart;
             },
             resetAll () {
@@ -243,7 +242,6 @@ const portfolioList = (data, events) => {
             filterToObject (array) {
                 //convert filter to object with id and active props
                 array = array.map((item) => {
-
                     const filter = {
                         id: util.generateUID(),
                         name: item,
